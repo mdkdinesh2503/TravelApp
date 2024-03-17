@@ -1,0 +1,159 @@
+/*--------------------------------------------------------------------
+                        HEADER SECTION STARTS HERE
+--------------------------------------------------------------------*/
+
+header {
+  padding: 1.3rem 9%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: 0.6s;
+  background: var(--navbar-scroll);
+  border-bottom: var(--navbar-scroll-border);
+  box-shadow: var(--navbar-scroll-shadow);
+}
+
+header .header-logo {
+  width: 50px;
+  transition: 0.6s;
+  display: inline-flex;
+  align-items: center;
+}
+
+header .header-name {
+  font-size: 1.3rem;
+  letter-spacing: 0.2rem;
+  margin-left: 0.5rem;
+  color: var(--white);
+}
+
+header .header-logo img {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+}
+
+header .nav-bar a {
+  font-size: 1.26rem;
+  color: var(--white);
+  font-weight: 400;
+  margin-left: 2rem;
+  padding: 6px 15px;
+  letter-spacing: 0.1rem;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  border: var(--invisible-border);
+}
+
+header .nav-bar a:last-child {
+  background-color: var(--white);
+  padding: 0.6rem 0.8rem;
+  color: var(--black);
+  border: var(--white-border);
+}
+
+#menu-btn:hover,
+header .nav-bar a:hover {
+  color: var(--white);
+  border: var(--white-border);
+  background: none;
+}
+
+.activated {
+  text-decoration: overline;
+  text-shadow: var(--text-shadow);
+  border-radius: 5rem;
+}
+
+#menu-btn {
+  font-size: 1.7rem;
+  border-radius: 0.5rem;
+  background: var(--white);
+  color: var(--green);
+  border: var(--white-border);
+  padding: 0.8rem 0.9rem;
+  cursor: pointer;
+  display: none;
+}
+
+@media (max-width: 1250px) {
+  header {
+    padding: 1.3rem 5%;
+  }
+
+  header .nav-bar a {
+    font-size: 1.18rem;
+    margin-left: 1.2rem;
+  }
+}
+
+@media (max-width: 1070px) {
+  header .nav-bar {
+    position: fixed;
+    top: 8rem;
+    right: 1rem;
+    border: var(--white-border);
+    background-color: var(--white);
+    border-radius: 1rem;
+    width: 23rem;
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: top right;
+    transition: none;
+    text-align: center;
+  }
+
+  #menu-btn {
+    display: inline-block;
+  }
+
+  header {
+    background-position: center;
+    justify-content: space-around;
+    padding: 1.3rem 1%;
+  }
+
+  header .nav-bar.active {
+    transform: scale(1);
+    opacity: 1;
+    transition: 0.2s ease-out;
+  }
+
+  header .nav-bar a {
+    font-size: 1.2rem;
+    display: block;
+    margin: 1.7rem;
+    padding: 6px 10px;
+    outline: none;
+    color: var(--green);
+  }
+
+  header .nav-bar a:hover {
+    background: var(--green);
+    color: var(--white);
+    transition: 0.3s ease-out;
+    transition-delay: 0.1s;
+  }
+
+  header .nav-bar a:last-child {
+    background: var(--green);
+    color: var(--white);
+    border: var(--border);
+    transition: 0.3s ease-out;
+    transition-delay: 0.1s;
+  }
+
+  header .nav-bar a:last-child:hover {
+    background: var(--white);
+    color: var(--green);
+    transition: 0.3s ease-out;
+    transition-delay: 0.1s;
+  }
+}
+
+/* Header section ends here */

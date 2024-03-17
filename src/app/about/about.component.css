@@ -1,0 +1,227 @@
+/*--------------------------------------------------------------------
+                        ABOUT SECTION STARTS HERE
+--------------------------------------------------------------------*/
+
+.about .about-content {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  min-height: 57vh; 
+  justify-content: center;
+  gap: 1rem;
+  margin: 5rem 12% 1rem 12%;
+}
+
+.about .about-content .about-content-1 {
+  width: 50%;
+  margin-top: 4rem;
+}
+
+.about .about-content .about-content-1 span{
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.about .about-content .about-content-1 h1{
+  font-size: 3rem;
+  width: 80%;
+}
+
+.about .about-content .about-content-1 p{
+  font-size: 1.3rem;
+  width: 52%;
+  margin-bottom: 1rem;
+}
+
+.about .about-content .about-content-2 {
+  height: 28rem;
+  width: 30rem;
+  border: var(--border);
+  border-radius: 1rem;
+  box-shadow: var(--green-box-shadow);
+}
+
+.about .about-content .about-content-2 img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 1rem;
+}
+
+.about .about-image {
+  height: 26rem;
+  width: 100%;
+}
+
+.about .about-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 1510px) {
+  .about .about-content .about-content-1 span{
+    font-size: 1.4rem;
+  }
+
+  .about .about-content .about-content-1 h1{
+    font-size: 2rem;
+    width: 80%;
+  }
+
+  .about .about-content .about-content-1 p{
+    font-size: 1.1rem;
+    width: 70%;
+  }
+}
+
+@media (max-width: 1320px) {
+  .about .about-content .about-content-1 span{
+    font-size: 1.3rem;
+  }
+
+  .about .about-content .about-content-1 h1{
+    font-size: 1.8rem;
+    width: 90%;
+  }
+
+  .about .about-content .about-content-1 p{
+    width: 80%;
+  }
+
+  .about .about-content .about-content-2 {
+    height: 25rem;
+    width: 25rem;
+  }
+}
+
+@media (max-width: 1070px) {
+  .about .about-image {
+    height: 15rem;
+    width: 100%;
+  }
+}
+
+@media (max-width: 1110px) {
+  .about .about-content {
+    margin: 5rem 5% 1rem 5%;
+  }
+
+  .about .about-content .about-content-2 {
+    height: 21rem;
+    width: 21rem;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 800px) {
+  .about .about-content {
+    flex-direction: column-reverse;
+    margin: 3rem 5% 4rem 5%;
+  }
+
+  .about .about-content .about-content-1 {
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 650px) {
+  .about .about-image {
+    margin-left: -20rem;
+    width: 180%;
+  }
+}
+
+@media (max-width: 410px) {
+  .about .about-image {
+    margin-left: 0;
+    height: 20rem;
+    width: 100%;
+  }
+}
+
+/* About section ends here */
+
+/*--------------------------------------------------------------------
+                        REVIEW SECTION STARTS HERE
+--------------------------------------------------------------------*/
+
+.review {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 2rem 9% 2rem 6%;
+  place-content: center;
+  margin: 1rem 4%;
+}
+
+.review .review-content {
+  width: 25rem;
+  padding: 1rem 1.5rem;
+  border: var(--border);
+  cursor: pointer;
+  box-shadow: var(--green-box-shadow);
+}
+
+.review .review-content p {
+  font-size: 1.1rem;
+  color: var(--black);
+  letter-spacing: .1rem;
+}
+
+.review .review-content i.quote {
+  font-size: 2.5rem;
+  color: var(--green);
+}
+
+.review .review-content .review-contents {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 10px;
+}
+
+.review .review-contents .review-content-1 .review-stars{
+  color: var(--light-green);
+  font-size: 1.3rem;
+}
+
+.review .review-contents .review-content-1 .review-stars .checked{
+  color: var(--green);
+}
+
+.review .review-content .review-content-2 {
+  height: 5rem;
+  width: 5rem;
+  border-radius: 50%;
+}
+
+.review .review-content .review-content-2 img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.review .review-content:hover {
+  border: var(--white-border);
+  background: var(--green);
+}
+
+.review .review-content:hover .review-content-1 .review-stars .checked,
+.review .review-content:hover i.quote{
+  color: var(--light-green);
+}
+
+.review .review-content:hover .review-content-1 .review-stars,
+.review .review-content:hover p{
+  color: var(--white);
+}
+
+.review .review-content:hover h1 {
+  letter-spacing: .1rem;
+}
+
+/* Review section ends here */

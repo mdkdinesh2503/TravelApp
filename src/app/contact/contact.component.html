@@ -1,0 +1,62 @@
+<app-navbar></app-navbar>
+
+<!-- Main Heading starts -->
+
+<section class="heading">
+  <img src="../../assets/images/Heading_image.jpg">
+
+  <div class="heading-content">
+    <h3>Contact Us</h3>
+    <p> <a routerLink="/home">home</a> / contact </p>
+  </div>
+
+</section>
+
+<!-- Main Heading ends -->
+
+<!-- Contact section starts here -->
+
+<section class="contact">
+
+  <div class="contact-container">
+    <a title="Phone Number">
+      <i class="fas fa-phone"></i>
+      <h3>Phone :</h3>
+      <p>+91-98765-43215</p>
+    </a>
+
+    <a title="Email Address">
+      <i class="fas fa-envelope"></i>
+      <h3> Email : </h3>
+      <p>xyz.gmail.com</p>
+    </a>
+
+    <a title="My Current Location">
+      <i class="fas fa-map"></i>
+      <h3>Address :</h3>
+      <p>Tamilnadu, India</p>
+    </a>
+  </div>
+
+  <div class="contact-content">
+    <form>
+      <input type="text" name="UserName :" placeholder="Name..." autocomplete="off" required title="Enter your Name">
+      <input type="email" name="Email :" placeholder="Email..." autocomplete="off" required title="Enter your Email">
+      <input type="tel" name="Phone Number :" placeholder="Phone number..." maxlength="10" autocomplete="off" required
+        title="Enter your Phone Number">
+      <textarea name="Messgae Box :" placeholder="How can I help you..." id="" cols="30" rows="10" autocomplete="off"
+        required title="Enter your Message"></textarea>
+      <button class="btn" type="submit" title="Click Here to Submit"> Send <span
+          class="fas fa-caret-square-right"></span> </button>
+    </form>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1956.7800908477464!2d78.16097530052348!3d11.220141563663764!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4e808270bdbe69cb!2zMTHCsDEzJzEyLjUiTiA3OMKwMDknNDEuOSJF!5e0!3m2!1sen!2sin!4v1643005158725!5m2!1sen!2sin"
+      allowfullscreen="" loading="lazy" title="My Current Location is Available Here">
+    </iframe>
+  </div>
+
+</section>
+
+<!-- Contact section ends here -->
+
+<app-footer></app-footer>

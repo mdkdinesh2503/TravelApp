@@ -1,0 +1,58 @@
+/*--------------------------------------------------------------------
+                    PAGE ERROR SECTION STARTS HERE
+--------------------------------------------------------------------*/
+
+.error-container {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--green);
+}
+
+.error-container .error-contents {
+  text-align: center;
+  height: 50rem;
+  width: 50rem;
+  box-shadow: var(--box-shadow);
+  border: var(--white-border);
+  background: var(--white);
+  padding: 0.5rem 9%;
+}
+
+.error-container .error-contents .error-image {
+  height: 35rem;
+  width: 35rem;
+  margin: 0 auto;
+}
+
+.error-container .error-contents .error-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.error-container .error-contents p {
+  font-size: 1.6rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 600px) {
+  .error-container .error-contents {
+    height: 40rem;
+    width: 50rem;
+  }
+
+  .error-container .error-contents .error-image {
+    height: 25rem;
+    width: 25rem;
+  }
+
+  .error-container .error-contents p {
+    font-size: 1.2rem;
+  }
+}
+
+/* Page error section ends here */
