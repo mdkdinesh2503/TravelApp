@@ -1,0 +1,66 @@
+/*--------------------------------------------------------------------
+                      FRONT PAGE SECTION STARTS HERE
+--------------------------------------------------------------------*/
+
+.front-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.front-container .front-image {
+  height: 100vh;
+  width: 100%;
+}
+
+.front-container .front-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-bg);
+}
+
+.front-container .front-image img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.front-container .front-content {
+  position: absolute;
+  text-align: center;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -5rem;
+  width: 100%;
+}
+
+.front-container .front-content h1 {
+  font-size: 5rem;
+  font-weight: 400;
+  letter-spacing: 1rem;
+  font-family: "Courier New", Courier, monospace;
+  margin-bottom: 3rem;
+  color: var(--white);
+}
+
+@media (max-width: 1200px) {
+  .front-container .front-content h1 {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 525px) {
+  .front-container .front-content h1 {
+    font-size: 2rem;
+    letter-spacing: 0.5rem;
+  }
+}
+
+/* Front page section ends here */

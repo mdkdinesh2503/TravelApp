@@ -1,0 +1,105 @@
+<!-- Register section starts here -->
+
+<section class="register">
+
+  <div class="register-container">
+
+    <form class="register-contents" [formGroup]="registerReactiveForm" (ngSubmit)="submitList(username.value, emails.value, pass.value)">
+
+      <span class="fas fa-home close" routerLink="/home" title="Go Back to Home"></span>
+
+      <h2 class="register-title">Register</h2>
+
+      <div class="register-content one">
+
+        <i class="fas fa-user"></i>
+        <input type="text" autocomplete="off" name="UserName" placeholder="Username" #username formControlName="USERNAME" pattern="^(?!.*(.).*\1\1)[a-zA-Z]{3,20}$" />
+
+      </div>
+
+      <div class="information-error" *ngIf="registerReactiveForm.controls['USERNAME'].invalid && registerReactiveForm.controls['USERNAME'].dirty">
+        <p class="error" *ngIf="registerReactiveForm.controls['USERNAME'].errors?.['required']">
+          <i class="fas fa-exclamation-circle"></i>&numsp;Username is not Empty!
+        </p>
+
+        <p class="error" *ngIf="registerReactiveForm.controls['USERNAME'].errors?.['pattern']" title="Min 3 digits, consecutive not allowed, Only Alphabets!">
+          <i class="fas fa-exclamation-circle"></i>&numsp;Username is Invaild!
+        </p>
+      </div>
+
+      <div class="information-error" *ngIf="registerReactiveForm.controls['USERNAME'].valid && registerReactiveForm.controls['USERNAME'].dirty">
+        <small class="success"><i class="fas fa-thumbs-up"></i>&numsp;Correct</small>
+      </div>
+
+      <div class="register-content one">
+
+        <i class="fas fa-envelope"></i>
+        <input type="email" autocomplete="off" name="Email" placeholder="Email" #emails formControlName="EMAIL" pattern="^[0-9a-zA-Z]+[._]{0,1}[0-9a-zA-Z]+[@][a-zA-Z]+[.][a-zA-Z]{2,3}([.][a-zA-Z]{2,3}){0,1}$" />
+
+      </div>
+
+      <div class="information-error" *ngIf="registerReactiveForm.controls['EMAIL'].invalid && registerReactiveForm.controls['EMAIL'].dirty">
+        <p class="error" *ngIf="registerReactiveForm.controls['EMAIL'].errors?.['required']">
+          <i class="fas fa-exclamation-circle"></i>&numsp;Email is not Empty!
+        </p>
+
+        <p class="error" *ngIf="registerReactiveForm.controls['EMAIL'].errors?.['pattern']">
+          <i class="fas fa-exclamation-circle"></i>&numsp;Email is Invalid!
+        </p>
+      </div>
+
+      <div class="information-error" *ngIf="registerReactiveForm.controls['EMAIL'].valid&& registerReactiveForm.controls['EMAIL'].dirty">
+        <small class="success"><i class="fas fa-thumbs-up"></i>&numsp;Correct</small>
+      </div>
+
+      <div class="register-content one">
+
+        <i class="fas fa-lock"></i>
+        <input type="text" autocomplete="off" name="Password" placeholder="Password" #pass formControlName="PASSWORD" pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).{6,12}$" />
+
+      </div>
+
+      <div class="information-error" *ngIf="registerReactiveForm.controls['PASSWORD'].invalid&& registerReactiveForm.controls['PASSWORD'].dirty">
+        <p class="error" *ngIf="registerReactiveForm.controls['PASSWORD'].errors?.['required']">
+          <i class="fas fa-exclamation-circle"></i>&numsp;Password is not Empty!
+        </p>
+
+        <p class="error" *ngIf="registerReactiveForm.controls['PASSWORD'].errors?.['pattern']">
+          <i class="fas fa-exclamation-circle" title="Min 7 digits, 1 Upcse, 1 Lwcse, number & special Chars!"></i>&numsp;Password is Invalid!
+        </p>
+      </div>
+      <div class="information-error" *ngIf="registerReactiveForm.controls['PASSWORD'].valid&& registerReactiveForm.controls['PASSWORD'].dirty">
+        <small class="success"><i class="fas fa-thumbs-up"></i>&numsp;Correct</small>
+      </div>
+
+      <div class="register-content two">
+
+        <i class="fas fa-lock"></i>
+        <input type="text" name="ConfirmPassword" placeholder="Confirm Password" formControlName="CONFIRMPASSWORD" />
+
+      </div>
+
+      <div class="information-error" *ngIf="registerReactiveForm.controls['CONFIRMPASSWORD'].invalid&& registerReactiveForm.controls['CONFIRMPASSWORD'].dirty">
+        <p class="error" *ngIf="registerReactiveForm.controls['CONFIRMPASSWORD'].errors?.['required']">
+          <i class="fas fa-exclamation-circle"></i>&numsp;Password is not Empty!
+        </p>
+
+        <p class="error" *ngIf="registerReactiveForm.controls['CONFIRMPASSWORD'].errors?.['confirmPasswordValidator']">
+          <i class="fas fa-exclamation-circle"></i>&numsp;Password not same!
+        </p>
+      </div>
+      <div class="information-error" *ngIf="registerReactiveForm.controls['CONFIRMPASSWORD'].valid&& registerReactiveForm.controls['CONFIRMPASSWORD'].dirty">
+        <small class="success"><i class="fas fa-thumbs-up"></i>&numsp;Correct</small>
+      </div>
+
+      <button type="submit" class="register-btn">Register</button>
+
+      <p class="register-login">Already have an account ? <a routerLink="/login">Login</a></p>
+
+    </form>
+
+  </div>
+
+</section>
+
+<!-- Register section ends here -->

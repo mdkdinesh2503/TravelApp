@@ -1,0 +1,304 @@
+/*--------------------------------------------------------------------
+                        HOME SECTION STARTS HERE
+--------------------------------------------------------------------*/
+
+.home {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  font-family: "Nunito", sans-serif;
+  font-weight: 100;
+}
+
+.home .home-image-container {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+}
+
+.home .home-image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-bg);
+  z-index: 2;
+}
+
+.home .home-image-container .imagediv {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.home .home-content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: absolute;
+  text-align: center;
+  z-index: 3;
+  color: var(--white);
+}
+
+.home .home-content h3 {
+  font-size: 4rem;
+  margin-bottom: 2px;
+  font-weight: 400;
+  text-shadow: var(--text-shadow);
+}
+
+.home .home-content p {
+  font-size: 1.7rem;
+  width: 60%;
+  margin: 1rem auto;
+}
+
+@media (max-width: 1070px) {
+  .home .home-content h3 {
+    font-size: 3rem;
+  }
+
+  .home .home-content p {
+    font-size: 1.4rem;
+    width: 90%;
+  }
+}
+
+@media (max-width: 730px) {
+  .home .home-content h3 {
+    font-size: 2rem;
+  }
+
+  .home .home-content p {
+    font-size: 1.2rem;
+    width: 90%;
+  }
+}
+
+@media (max-width: 500px) {
+  .home .home-content h3 {
+    font-size: 1.7rem;
+  }
+
+  .home .home-content p {
+    font-size: 1rem;
+    width: 90%;
+  }
+}
+
+/* Home section ends here */
+
+/*--------------------------------------------------------------------
+                        SERVICE SECTION STARTS HERE
+--------------------------------------------------------------------*/
+
+.service {
+  padding: 2rem 0%;
+}
+
+.service .service-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding: 2rem 9% 2rem 6%;
+  place-content: center;
+}
+
+.service .service-container .service-content {
+  width: 30rem;
+  padding: 1rem;
+  text-align: center;
+  border: var(--border);
+  background: var(--green);
+  cursor: pointer;
+  box-shadow: var(--green-box-shadow);
+}
+
+.service .service-container .service-content .service-icon {
+  background: var(--white);
+  font-size: 2rem;
+  height: 4rem;
+  width: 4rem;
+  color: var(--green);
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  transition: 0.5s;
+  margin: 0.5rem auto;
+}
+
+.service .service-container .service-content h3 {
+  font-size: 1.6rem;
+  letter-spacing: 0.1rem;
+  font-weight: 500;
+  color: var(--green);
+  background: var(--white);
+  margin: 1.5rem auto;
+  border-radius: 3rem;
+}
+
+.service .service-container .service-content p {
+  color: var(--white);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  font-weight: 300;
+  letter-spacing: 0.03em;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.service .service-container .service-content:hover {
+  background: var(--white);
+}
+
+.service .service-container .service-content:hover .service-icon {
+  background: var(--green);
+  color: var(--white);
+  box-shadow: var(--green-box-shadow);
+}
+
+.service .service-container .service-content:hover h3 {
+  background: var(--green);
+  color: var(--white);
+}
+
+.service .service-container .service-content:hover p {
+  color: var(--green);
+}
+
+/* Service section ends here */
+
+/*--------------------------------------------------------------------
+                        OFFER SECTION STARTS HERE
+--------------------------------------------------------------------*/
+
+.offer {
+  background-image: url("../../assets/images/Home_offer.jpg");
+  background-size: cover;
+  height: 20rem;
+  width: 100%;
+  position: relative;
+  margin-bottom: 1rem;
+}
+
+.offer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-bg);
+  z-index: 2;
+}
+
+.offer .offer-content {
+  position: absolute;
+  text-align: center;
+  margin: 2rem auto;
+  width: 100%;
+  z-index: 3;
+  padding: 1rem;
+}
+
+.offer .offer-content h1 {
+  color: var(--white);
+  font-size: 3rem;
+  letter-spacing: 0.2rem;
+}
+
+.offer .offer-content p {
+  color: var(--white);
+  font-size: 1.8rem;
+}
+
+.offer .offer-content form {
+  border: var(--white-border);
+  width: fit-content;
+  padding: 0rem 1rem;
+  margin: 1rem auto;
+}
+
+.offer .offer-content form .email {
+  padding: 0.5rem;
+  font-size: 1.2rem;
+  background: transparent;
+  border: var(--white-border);
+  border-right-color: transparent;
+  color: var(--white);
+}
+
+.offer .offer-content form .email::placeholder {
+  color: var(--white);
+  padding-left: 0.5rem;
+}
+
+.offer .offer-content form .email:focus {
+  outline: none;
+}
+
+.offer .offer-content form .btn {
+  font-size: 1.2rem;
+  border-radius: 0rem;
+  border: var(--white-border);
+}
+
+@media (max-width: 1070px) {
+  .offer .offer-content h1 {
+    font-size: 2rem;
+  }
+
+  .offer .offer-content p {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 730px) {
+  .offer {
+    height: 16rem;
+  }
+
+  .offer .offer-content {
+    padding: 0rem;
+  }
+
+  .offer .offer-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .offer .offer-content p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .offer {
+    height: 15rem;
+  }
+
+  .offer .offer-content h1 {
+    font-size: 1.3rem;
+  }
+
+  .offer .offer-content p {
+    font-size: 1rem;
+  }
+
+  .offer .offer-content form .btn {
+    padding: 0.3rem;
+    font-size: 1.1rem;
+  }
+
+  .offer .offer-content form .email {
+    padding: 0.3rem;
+    font-size: 1.1rem;
+    width: 10rem;
+  }
+}
+
+/* Offer section ends here */

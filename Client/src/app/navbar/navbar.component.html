@@ -1,0 +1,26 @@
+<!-- Header section starts here -->
+
+<header>
+
+  <a class="header-logo"> <img src="../../assets/images/Header_logo.png" alt="Header Logo" title="Travel">
+    <p class="header-name">TRAVS</p>
+  </a>
+
+  <nav class="nav-bar" [ngClass]="{'active': isMenuOpen}">
+    <a routerLink="/home" routerLinkActive="activated">HOME</a>
+    <a routerLink="/about" routerLinkActive="activated">ABOUT</a>
+    <a routerLink="/packages" routerLinkActive="activated">PACKAGES</a>
+    <a routerLink="/book" routerLinkActive="activated">BOOKING</a>
+    <a routerLink="/contact" routerLinkActive="activated">CONTACT</a>
+    <a routerLink="/login" routerLinkActive="activated">LOGIN</a>
+  </nav>
+  
+  @if(hide){<div id="menu-btn" (click)="openMenu()" class="fas fa-bars"></div>}
+
+  @if(isMenuOpen){<div id="menu-btn" (click)="closeMenu()" class="fas fa-times"></div>}
+
+</header>
+
+<!-- Header section ends here -->
+
+<router-outlet></router-outlet>
