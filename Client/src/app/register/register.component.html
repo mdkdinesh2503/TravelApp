@@ -4,7 +4,7 @@
 
   <div class="register-container">
 
-    <form class="register-contents" [formGroup]="registerReactiveForm" (ngSubmit)="submitList(username.value, emails.value, pass.value)">
+    <form class="register-contents" [formGroup]="registerReactiveForm" (ngSubmit)="submitList(username.value, emails.value)">
 
       <span class="fas fa-home close" routerLink="/home" title="Go Back to Home"></span>
 
@@ -75,7 +75,7 @@
       <div class="register-content two">
 
         <i class="fas fa-lock"></i>
-        <input type="text" name="ConfirmPassword" placeholder="Confirm Password" formControlName="CONFIRMPASSWORD" />
+        <input type="text" name="ConfirmPassword" placeholder="Confirm Password" formControlName="CONFIRMPASSWORD" autocomplete="off"/>
 
       </div>
 
@@ -103,3 +103,15 @@
 </section>
 
 <!-- Register section ends here -->
+
+<!-- Display Active Status Message starts here -->
+
+<div class="active-container" *ngIf="displayStatus">
+  <div class="active-content">
+    <img src="{{imagePath}}" alt="Success Sign">
+    <p class="message" [style.color]="color">{{message}}</p><br>
+    <button class="messageBtn" [style.background]="color" (click)="navigateActiveStatus()">ok</button>
+  </div>
+</div>
+
+<!-- Display Active Status Message ends here -->

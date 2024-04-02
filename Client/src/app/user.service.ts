@@ -1,15 +1,29 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UserService {
+  constructor(private route: Router) {}
 
-constructor(private http: HttpClient) { }
+  async addData(url: any, data:any) {
+    await fetch(url, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((result) => {
 
-addRegister(data:any) {
-  return this.http.post('http://localhost:3000/register', data);
-}
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
 
 }

@@ -1,56 +1,111 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const bodyParser = require("body-parser");
+const express = require('express');
+const { getDb, connectToDb } = require('./db');
+const { ObjectId } = require('mongodb');
 
-const cors = require("cors");
+const cors = require('cors');
 
 const app = express();
 
-app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:4200',
+  methods: 'GET, POST, PUT, PATCH, DELETE, HEAD',
+  credentials: true,
+}));
 
-const mongoDbUrl ="mongodb+srv://dinesh:mdk@travelapp-db.w5uz0dp.mongodb.net/?retryWrites=true&w=majority&appName=TravelApp-Db";
+app.use(express.json());
 
-// mongodb+srv://dinesh:mdk@travelapp-db.w5uz0dp.mongodb.net/
-// Connection to Server & MongoDb Database
-var dataname = "travel";
-var database;
+// Db Connection
+let db;
 
-app.listen(5038, ()=> {
-  console.info("Server connected Successfully!!");
-  mongoose.connect(mongoDbUrl)
-    .then(() => {console.info("Successfully connected to MongoDb Database!!");})
-    .catch((error) => console.error("Error While Connecting to MongoDb Database!!", error))
-});
-
-app.get('/Server/travel/GetREgister', (request, response)=> {
-  database.collection("registers").find({}).toArray((error, result)=> {
-    response.send(result);
-  });
+connectToDb((error) => {
+  if(!error){
+    app.listen('3000', () => {
+      console.info('Success - Localhost Server!!')
+    })
+    db = getDb()
+  }
 })
 
-// var registerRouter = require("./routers/register");
+app.get('/registers', (req, res)=> {
+  let registers = []
 
-// app.use('/register', registerRouter);
+  db.collection('registers')
+    .find()
+    .sort({id: 1})
+    .forEach(register => registers.push(register))
+    .then(() => {
+      res.status(200).json(registers)
+    })
+    .catch(() => {
+      res.status(500).json({error: 'Could not fetch the documents'})
+    })
+})
 
-// async function insert() {
-//   await Register.create({
-//     Name : "Kumar",
-//     Email : "kumar@gmail.com",
-//     Password : "Kumar@123"
-//   });
-// }
-// insert();
+app.get('/registers/:id', (req, res) => {
 
-// API endpoints
-// app.post('/Server/register', async (req, res) => {
-//   try {
-//     const { username, email, password } = req.body;
-//     const user = new Register({ username, email, password });
-//     await user.save();
-//     res.status(201).send('User created successfully');
-//   } catch (err) {
-//     console.error('Error creating user:', err);
-//     res.status(500).send('Internal Server Error');
-//   }
-// });
+  if (ObjectId.isValid(req.params.id)) {
+
+    db.collection('registers')
+      .findOne({_id: new ObjectId(req.params.id)})
+      .then(doc => {
+        res.status(200).json(doc)
+      })
+      .catch(error => {
+        res.status(500).json({error: 'Could not fetch the document'})
+      })
+      
+  } else {
+    res.status(500).json({error: 'Could not fetch the document'})
+  }
+
+})
+
+app.post('/registers', async (req, res) => {
+  const register = req.body;
+
+  db.collection('registers')
+    .insertOne(register)
+    .then(result => {
+      res.status(201).json(result)
+    })
+    .catch(error => {
+      res.status(500).json({error: 'Could not create new document'})
+    })
+})
+
+app.delete('/registers/:id', (req, res) => {
+
+  if (ObjectId.isValid(req.params.id)) {
+
+  db.collection('registers')
+    .deleteOne({ _id: new ObjectId(req.params.id) })
+    .then(result => {
+      res.status(200).json(result)
+    })
+    .catch(error => {
+      res.status(500).json({error: 'Could not delete document'})
+    })
+
+  } else {
+    res.status(500).json({error: 'Could not delete document'})
+  }
+})
+
+app.patch('/registers/:id', (req, res) => {
+  const updates = req.body
+
+  if (ObjectId.isValid(req.params.id)) {
+
+    db.collection('registers')
+      .updateOne({ _id: new ObjectId(req.params.id) }, {$set: updates})
+      .then(result => {
+        res.status(200).json(result)
+      })
+      .catch(error => {
+        res.status(500).json({error: 'Could not update document'})
+      })
+
+  } else {
+    res.status(500).json({error: 'Could not update document'})
+  }
+})

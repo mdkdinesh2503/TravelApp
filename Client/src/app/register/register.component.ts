@@ -16,10 +16,21 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css'],
   standalone: true,
-  imports: [RouterLink, FormsModule, ReactiveFormsModule, CommonModule, HttpClientModule]
+  imports: [
+    RouterLink,
+    FormsModule,
+    ReactiveFormsModule,
+    CommonModule,
+    HttpClientModule
+  ],
+  providers: [UserService],
 })
 export class RegisterComponent implements OnInit {
-  constructor(private fb: FormBuilder, private route: Router, private userService : UserService) {}
+  constructor(
+    private fb: FormBuilder,
+    private route: Router,
+    private userService: UserService
+  ) {}
 
   ngOnInit() {}
 
@@ -35,7 +46,13 @@ export class RegisterComponent implements OnInit {
     }
   );
 
-  submitList(username: any, email: any, pass: any) {
+  condition: boolean = true;
+  displayStatus: boolean = false;
+  message:any;
+  imagePath:any;
+  color:any;
+
+  async submitList(usr: any, eml: any) {
     if (this.registerReactiveForm.controls['USERNAME'].errors?.['required']) {
       alert('Username is not Empty!!');
     } else if (
@@ -55,17 +72,54 @@ export class RegisterComponent implements OnInit {
     } else if (!this.registerReactiveForm.valid) {
       alert('Field must not contain any error');
     } else {
+      await fetch('http://localhost:3000/registers', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      })
+        .then((response) => {
+          return response.json();
+        })
+        .then((data) => {
+          for (var i = 0; i < data.length; i++) {
+            if (usr == data[i].USERNAME) {
+              alert('Username is Already Exist');
+              this.condition = false;
+            } else if (eml == data[i].EMAIL) {
+              alert('Email is Already Exist');
+              this.condition = false;
+            } else {
+            }
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
 
-      var registerValue = {
-        UserName: username,
-        Email: email,
-        Password: pass
-      };
-
-      this.userService.addRegister(registerValue).subscribe();
-
-    alert('Registered Successfull');
-    this.route.navigate(['/login']);
+      if (this.condition) {
+        this.userService.addData('http://localhost:3000/registers', this.registerReactiveForm.value);
+        this.message = "Registered Successfull";
+        this.imagePath = "../../assets/images/tick.png";
+        this.color = "green";
+        this.displayStatus = true;
+      } else {
+        this.message = "Inavlid Credentials";
+        this.imagePath = "../../assets/images/wrong.png";
+        this.color = "red";
+        this.displayStatus = true;
+      }
     }
   }
+
+  navigateActiveStatus() {
+    this.displayStatus = false;
+
+    if (this.imagePath == "../../assets/images/tick.png") {
+      this.route.navigate(['/login']);
+    } else {
+      window.location.reload();
+    }
+  }
+
 }
