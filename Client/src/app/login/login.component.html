@@ -4,7 +4,7 @@
 
   <div class="login-container">
 
-    <form class="login-contents">
+    <form class="login-contents" (ngSubmit)="submitList(username.value, password.value)">
 
       <span class="fas fa-home close" routerLink="/home" title="Go Back to Home"></span>
 
@@ -13,25 +13,25 @@
       <div class="login-content one">
 
         <i class="fas fa-user"></i>
-        <input type="text" autocomplete="off" name="username" placeholder="Username" />
+        <input type="text" autocomplete="off" name="UserName" placeholder="Username" #username/>
 
       </div>
 
       <div class="login-content two">
 
         <i class="fas fa-lock"></i>
-        <input type="password" name="password" placeholder="Password" />
+        <input type="password" autocomplete="off" name="Password" placeholder="Password" #password [type]="fieldTextType ? 'text' : 'password'"/>
 
       </div>
 
       <div class="login-buttons">
 
         <div class="login-password-1">
-          <input type="checkbox">
+          <input type="checkbox" (click)="showPass()">
           <p>Show Password</p>
         </div>
 
-        <a class="login-password-2">Forgot Password?</a>
+        <a class="login-password-2" (click)="openForgotPass()">Forgot Password?</a>
 
       </div>
 
@@ -46,3 +46,15 @@
 </section>
 
 <!-- Login section ends here -->
+
+<!-- Display Active Status Message starts here -->
+
+<div class="active-container" *ngIf="displayStatus">
+  <div class="active-content">
+    <img src="{{imagePath}}" alt="Success Sign">
+    <p class="message" [style.color]="color">{{message}}</p><br>
+    <button class="messageBtn" [style.background]="color" (click)="navigateActiveStatus()">ok</button>
+  </div>
+</div>
+
+<!-- Display Active Status Message ends here -->

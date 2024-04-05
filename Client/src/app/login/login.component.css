@@ -244,3 +244,63 @@
 }
 
 /* Login section ends here */
+
+/*--------------------------------------------------------------------
+                      ACTIVE MESSAGE SECTION STARTS HERE
+--------------------------------------------------------------------*/
+
+.active-container {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
+  backdrop-filter: blur(10px);
+  z-index: 10000;
+}
+
+.active-container .active-content {
+  position: relative;
+  height: fit-content;
+  padding: 1rem 1.8rem;
+  background-color: var(--white);
+  text-align: center;
+  margin-top: 15rem;
+  border-radius: .5rem;
+  border: var(--border);
+  box-shadow: var(--box-shadow);
+  z-index: 10000;
+}
+
+.active-container .active-content img {
+  height: 6rem;
+  width: 6rem;
+}
+
+.active-container .active-content .message {
+  font-size: 2rem;
+}
+
+.active-container .active-content .messageBtn {
+  background-color: var(--green);
+  color: var(--white);
+  text-align: center;
+  font-size: 1.8rem;
+  padding: .3rem 1rem;
+  border-radius: 25rem;
+  border: var(--border);
+}
+
+.active-container .active-content .messageBtn:hover {
+  cursor: pointer;
+}
+
+.success {
+  color: var(--green);
+}
+
+.failure {
+  color: var(--red);
+}
+
+/* Active Message section ends here */
